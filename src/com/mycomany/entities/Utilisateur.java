@@ -5,7 +5,11 @@
  */
 package com.mycomany.entities;
 
-
+/**
+ *
+ * @author Lenovo
+ */
+//taw n7oto fi description
 public class Utilisateur {
     
     private int id;
@@ -17,10 +21,10 @@ public class Utilisateur {
 
     public Utilisateur(String email, String image, String nom, String prenom, String password) {
         this.email = email;
+        this.image = image;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
-        this.image = image;
     }
     
     

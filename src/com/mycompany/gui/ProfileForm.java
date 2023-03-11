@@ -80,15 +80,15 @@ public class ProfileForm extends BaseForm {
                 )
         ));
 
-        TextField username = new TextField("Foulen");
+        TextField username = new TextField("Admin");
         username.setUIID("TextFieldBlack");
         addStringValue("Username", username);
 
-        TextField email = new TextField("Foulen@Folen.com", "E-Mail", 20, TextField.EMAILADDR);
+        TextField email = new TextField("AdminHealthified@admin.com", "E-Mail", 20, TextField.EMAILADDR);
         email.setUIID("TextFieldBlack");
         addStringValue("E-Mail", email);
         
-        TextField password = new TextField("sandeep", "Password", 20, TextField.PASSWORD);
+        TextField password = new TextField("admin", "Password", 20, TextField.PASSWORD);
         password.setUIID("TextFieldBlack");
         addStringValue("Password", password);
 

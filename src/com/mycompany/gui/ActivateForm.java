@@ -70,14 +70,14 @@ public class ActivateForm extends BaseForm {
                 )
         );
         
-        email = new TextField("", "Saisir votre Mail", 20, TextField.ANY);
+        email = new TextField("", "Enter your email", 20, TextField.ANY);
         email.setSingleLineTextArea(false);
         
         
         
-        Button validate = new Button("validate");
+        Button validate = new Button("Continue");
         Label haveAnAccount = new Label("Already have an account?");
-        Button signIn = new Button("Reset password");
+        Button signIn = new Button("Reset password?");
         signIn.addActionListener(e -> previous.showBack());
         signIn.setUIID("CenterLink");
         
@@ -105,7 +105,7 @@ public class ActivateForm extends BaseForm {
             
             sendMail(res);
             ipDialog.dispose();
-            Dialog.show("PASSWORK", "We have sent the password to your email. Please check your InBox", new Command("OK"));
+            Dialog.show("Password", "If this mail exists you will get an email containing your password", new Command("OK"));
             new SignInForm(res).show();
             refreshTheme();
             
@@ -132,7 +132,7 @@ public class ActivateForm extends BaseForm {
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
             String mp = ServiveUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);
-            String txt = "Welcome to Healthified : write the password : "+mp+" the click validate";
+            String txt = "Healthified Password RESET : Your Password is  : "+mp+" the click validate";
             
             msg.setText(txt);
             

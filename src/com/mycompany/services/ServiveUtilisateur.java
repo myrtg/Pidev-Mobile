@@ -13,6 +13,7 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.TextField;
 import com.codename1.ui.util.Resources;
 import com.mycomany.utils.Statics;
+import com.mycompany.gui.ProfileForm;
 import com.mycompany.gui.SessionManager;
 import java.util.Map;
 import java.util.Vector;
@@ -35,7 +36,7 @@ public class ServiveUtilisateur {
             instance = new ServiveUtilisateur();
         return instance ;
     }
-    
+    private Resources res;    
     public ServiveUtilisateur() {
         req = new ConnectionRequest();
         
@@ -43,7 +44,7 @@ public class ServiveUtilisateur {
     
     public void signup(TextField password,TextField email,TextField confirmPassword ,TextField nom ,TextField prenom , Resources res ){
         
-        String url = Statics.BASE_URL+"/register?email="+email.getText().toString()+"&nom="+nom.getText().toString()+"&prenom="+prenom.getText().toString()+"&password="+password.getText().toString();
+        String url = Statics.BASE_URL+"/api/Register?email="+email.getText().toString()+"&nom="+nom.getText().toString()+"&prenom="+prenom.getText().toString()+"&password="+password.getText().toString();
     
         req.setUrl(url);
         
@@ -93,7 +94,7 @@ public class ServiveUtilisateur {
              
                 //Session 
                 float id = Float.parseFloat(user.get("id").toString());
-                SessionManager.setId((int)id);//jibt id ta3 user ly3ml login w sajltha fi session ta3i
+                SessionManager.setId((int)id);
                 
                 SessionManager.setPassowrd(user.get("password").toString());
                 SessionManager.setNom(user.get("nom").toString());
@@ -107,8 +108,10 @@ public class ServiveUtilisateur {
                 
                 
                 if(user.size() >0 ) 
-                   // houni nzid user win yemchi baed ma yamel login
-                    System.out.println("helloooooo");
+                   
+                    System.out.println("HELLLLLOOOOOO");
+                    new ProfileForm(rs).show();
+                    
                     
                     }
             
@@ -129,7 +132,7 @@ public class ServiveUtilisateur {
         
         
         String url = Statics.BASE_URL+"/api/getPasswordByEmail?email="+email;
-        req = new ConnectionRequest(url, false); //false ya3ni url mazlt matba3thtich lel server
+        req = new ConnectionRequest(url, false);
         req.setUrl(url);
         
         req.addResponseListener((e) ->{
